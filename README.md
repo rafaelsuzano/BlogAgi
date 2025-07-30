@@ -2,7 +2,6 @@
 
 # 🔎 Testes Automatizados de Busca no Blog Agibank
 
------
 
 ## 🎯 Sobre o Projeto
 
