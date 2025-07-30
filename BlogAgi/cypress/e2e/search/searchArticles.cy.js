@@ -4,48 +4,52 @@ const blog = new BlogSearchPage();
 
 describe('Testes de busca no Blog Agibank – Page Object', () => {
   beforeEach(() => {
-    blog.visit();
-    blog.getSearchField().should('be.visible');
+    blog.VisitHomePage();
+
   });
 
- it('Cenário 1 – Busca por termo relevante (Pix)', () => {
-    blog.getSearchField().should('be.visible');
+  it('Cenário 1 – Busca por termo relevante sem retorno tttt', () => {
+
+    blog.SearchFor('tttt');
+    cy.contains('Resultados encontrados para: tttt').should('be.visible');
+    // cy.contains('Pix').should('be.visible');
+
+    cy.contains('Lamentamos, mas nada foi encontrado para sua pesquisa, tente novamente com outras palavras.').should('be.visible');
+    cy.screenshot()
+
+
   });
 
- it.skip('Cenário 2 – Busca por termo inexistente (xpto123)', () => {
-    blog.searchFor('xpto123');
-    blog.getNoResultMessage().should('exist');
+  it('Cenário 2 – Busca por termo relevante com retorno INSS ', () => {
+
+    blog.SearchFor('INSS');
+
+    cy.get('.search-results, article') // Alvo geral, ajuste se necessário
+      .should('exist')
+
+      .and('be.visible');
+    cy.screenshot()
+
+
+
   });
 
- it.skip('Cenário 3 – Abrir artigo a partir da busca', () => {
-    blog.searchFor('Cartão');
-    blog.getFirstArticleLink()
-      .should('have.attr', 'href')
-      .then((href) => {
-        cy.visit(href);
-        blog.assertBodyHasText('Cartão');
-      });
+  it('Cenário 3 - Visita a página de busca do INSS e clica no primeiro resultado', () => {
+    blog.SearchFor('inss');
+
+
+
+    cy.contains('h2', 'Como consultar número do benefício INSS?') // Encontra o h2 com o texto
+      .click();
+
+    cy.contains('h1', 'Como consultar número do benefício INSS?').should('exist')
+
+      .and('be.visible');; // Verifica se o título da página do post está visível
+ 
+
   });
 
- it.skip('Cenário 4 – Termo genérico com múltiplos resultados', () => {
-    blog.searchFor('Conta');
-    blog.getArticles()
-      .should('have.length.greaterThan', 1)
-      .each(($el) => {
-        cy.wrap($el).should('contain.text', 'Conta');
-      });
-  });
 
- it.skip('Cenário 5 – Submissão de busca vazia', () => {
-    blog.getSearchField().focus().type('{enter}');
-    blog.assertUrlContains('s=');
 
-    cy.get('body').then($body => {
-      if ($body.text().toLowerCase().includes('resultado')) {
-        cy.contains(/resultado/i).should('exist');
-      } else {
-        cy.log('Busca vazia tratada com fallback visual.');
-      }
-    });
-  });
 });
+

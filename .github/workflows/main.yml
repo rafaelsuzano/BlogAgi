@@ -1,21 +1,19 @@
 name: Cypress Tests
 
-on:  
-  workflow_dispatch:
+on:
+  workflow_dispatch: # Permite disparar a action manualmente
 
 jobs:
   cypress-electron-tests:
     runs-on: ubuntu-latest
     env:
-      TERM: xterm
+      TERM: xterm # Variável de ambiente para o terminal
     steps:
-      - name: Get Codec
+      - name: Get Code # Clona o repositório
         uses: actions/checkout@v4.2.2
-     
-      - name: Instalar dependencias
+
+      - name: Instalar dependencias # Instala as dependências do projeto
         run: npm install
 
-      - name: Executar Testes
-        run: npx cypress run
-
-      
+      - name: Executar Testes # Executa os testes do Cypress especificando a pasta do projeto
+        run: npx cypress run --project ./cypress
