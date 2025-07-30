@@ -15,5 +15,8 @@ jobs:
       - name: Instalar dependencias # Instala as dependências do projeto
         run: npm install
 
+      - name: Instalar cypress # Instala as dependências do projeto
+        run: npm install cypress
+
       - name: Executar Testes # Executa os testes do Cypress especificando a pasta do projeto
         run: npx cypress run --project ./cypress
