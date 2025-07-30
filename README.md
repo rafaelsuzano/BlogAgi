@@ -1,4 +1,4 @@
-
+![build_and_deploy_next_js](https://github.com/rafaelsuzano/BlogAgi/actions/workflows/main.yml/badge.svg)
 
 # 🔎 Testes Automatizados de Busca no Blog Agibank
 
