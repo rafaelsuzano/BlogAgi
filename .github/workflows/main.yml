@@ -1,0 +1,21 @@
+name: Cypress Tests
+
+on:  
+  workflow_dispatch:
+
+jobs:
+  cypress-electron-tests:
+    runs-on: ubuntu-latest
+    env:
+      TERM: xterm
+    steps:
+      - name: Get Codec
+        uses: actions/checkout@v4.2.2
+     
+      - name: Instalar dependencias
+        run: npm install
+
+      - name: Executar Testes
+        run: npx cypress run
+
+      
