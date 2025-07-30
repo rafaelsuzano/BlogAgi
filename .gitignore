@@ -4,3 +4,4 @@ report/videos/*.*
 /node_modules
 report/*.*
 cypress/report/index.html
+package-lock.json
