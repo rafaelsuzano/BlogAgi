@@ -1,28 +1,29 @@
-name: Cypress Tests
+name: CI/CD Pipeline
 
-on:  
-  workflow_dispatch:
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
 
 jobs:
-  cypress-electron-tests:
+  build:
     runs-on: ubuntu-latest
-    env:
-      TERM: xterm
+
     steps:
-      - name: Get Codec
-        uses: actions/checkout@v4.2.2
-     
-      - name: Instalar dependencias
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js environment
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22.x' # <-- THIS IS THE KEY CHANGE
+
+      - name: Install dependencies
         run: npm install
 
-      - name: Executar Teste
-        run: npx cypress run
-
-
-      - name: Upload HTML Report
-        uses: actions/upload-artifact@v4
-        with:
-          name: html-report
-          path: cypress/report/index.html
-
-
+      # Add other steps here, e.g., running tests, building your application
+      - name: Run tests
+        run: npm test
