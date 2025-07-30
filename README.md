@@ -1,4 +1,8 @@
-![build_and_deploy_next_js](https://github.com/rafaelsuzano/BlogAgi/actions/workflows/main.yml/badge.svg)
+
+[![build_and_deploy_next_js](https://github.com/rafaelsuzano/BlogAgi/actions/workflows/main.yml/badge.svg)](https://github.com/rafaelsuzano/BlogAgi/actions?query=workflow%3A%22build_and_deploy_next_js%22)
+
+
+Este repositório contém o código do blog da Agi.
 
 # 🔎 Testes Automatizados de Busca no Blog Agibank
 
