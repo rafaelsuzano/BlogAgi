@@ -1,180 +1,143 @@
 
-# 🧪 Automação de Testes com Cypress – Busca de Artigos no Blog Agibank
 
-Este projeto apresenta a automação de testes end-to-end com **Cypress**, aplicada à funcionalidade de **busca de artigos** no blog oficial do Agibank:  
-🔗 [https://blog.agibank.com.br](https://blog.agibank.com.br)
+# 🔎 Testes Automatizados de Busca no Blog Agibank
 
-O objetivo é validar, por meio de testes funcionais automatizados, se a experiência de busca atende aos critérios de usabilidade, retorno coerente de dados e tratamento adequado de exceções.  
+-----
 
-📁 Repositório no GitHub: [github.com/rafaelsuzano/BlogAgi](https://github.com/rafaelsuzano/BlogAgi.git)
+## 🎯 Sobre o Projeto
 
----
+Este projeto tem como principal objetivo **garantir a qualidade e a funcionalidade da busca do Blog Agibank** por meio de **testes automatizados end-to-end**. Desenvolvido com **Cypress**, uma ferramenta de testes moderna e poderosa, e seguindo o padrão de design **Page Object Model (POM)**, ele oferece uma suíte de testes robusta que simula cenários reais de usuários.
 
-## 🎯 Objetivo do Projeto
+A automação da busca é crucial para o Blog Agibank, pois assegura que os leitores possam encontrar o conteúdo desejado de forma eficiente. Com este projeto, buscamos:
 
-Este projeto foi desenvolvido como parte de uma **avaliação técnica profissional** com foco em:
+  * **Identificar rapidamente regressões:** Qualquer alteração na funcionalidade de busca que possa comprometer a experiência do usuário será detectada de forma ágil.
+  * **Assegurar uma experiência de usuário consistente:** Garante que os usuários encontrem facilmente artigos e informações relevantes.
+  * **Otimizar o processo de desenvolvimento:** Reduz a necessidade de testes manuais repetitivos, liberando tempo para a equipe focar em melhorias e novas funcionalidades.
+  * **Aumentar a confiabilidade:** Garante que o recurso de busca funcione conforme o esperado em diversas situações.
 
-- Aplicação prática de automação com **Cypress**
-- Simulação de comportamento real do usuário
-- Validação funcional de uma aplicação web
-- Documentação clara, objetiva e profissional
+Este repositório é uma ferramenta essencial para a manutenção da excelência e confiabilidade do Blog Agibank.
 
----
+-----
 
-## 🛠️ Tecnologias Utilizadas
+## 🚀 Tecnologias Utilizadas
 
-- [Cypress 13.x](https://docs.cypress.io) – Automação end-to-end
+  * **Cypress**: Framework de testes end-to-end de nova geração.
+  * **JavaScript**: Linguagem de programação utilizada para escrever os testes.
+  * **Node.js**: Ambiente de execução para o JavaScript, necessário para o Cypress.
+  * **Page Object Model (POM)**: Padrão de design para organizar os elementos e interações da página, promovendo reusabilidade e manutenibilidade do código de teste.
 
-- JavaScript (ES6+)
+-----
 
-- Node.js 18+
+## 📦 Estrutura do Projeto
 
-- HTML/CSS (apenas leitura da estrutura DOM)
+A estrutura do projeto segue as convenções recomendadas pelo Cypress, com a adição de um diretório específico para os Page Objects, a fim de implementar o padrão POM de forma clara e organizada.
 
-- VSCode (IDE recomendada)
-
----
-
-## 📚 Cenários Automatizados
-
-### ✅ Cenário 1 – Busca por termo relevante ("Pix")
-
-**Objetivo:** Verificar se a busca retorna artigos coerentes com a palavra-chave inserida.
-
-- Acessar o blog
-
-- Digitar "Pix" no campo de busca
-
-- Validar que pelo menos um artigo é exibido
-
-- Verificar se o termo pesquisado aparece no título ou no corpo do artigo
-
----
-
-### ❌ Cenário 2 – Busca por termo inexistente ("xpto123")
-
-**Objetivo:** Validar o tratamento de termos irrelevantes ou sem correspondência.
-
-- Acessar o blog
-
-- Digitar "xpto123" no campo de busca
-
-- Verificar que nenhum resultado é exibido
-
-- Validar a exibição de uma mensagem de "nenhum resultado encontrado" ou equivalente
-
----
-
-### 🆗 Cenário 3 – Abertura de artigo a partir da busca
-
-**Objetivo:** Confirmar que os links de artigos retornados estão funcionando corretamente.
-
-- Realizar uma busca por "Cartão"
-
-- Clicar no primeiro resultado exibido
-
-- Verificar se o conteúdo do artigo foi carregado com sucesso
-
----
-
-### 📌 Cenário 4 – Termo genérico com muitos resultados
-
-**Objetivo:** Testar a paginação ou quantidade de resultados retornados.
-
-- Buscar por "Conta"
-
-- Verificar se múltiplos resultados são listados
-
-- Validar se os artigos listados estão relacionados ao termo buscado
-
----
-
-### ⛔ Cenário 5 – Campo de busca vazio
-
-**Objetivo:** Verificar o comportamento da aplicação ao submeter a busca em branco.
-
-- Acessar o blog
-
-- Clicar no botão de busca sem digitar nenhum termo
-
-- Verificar se ocorre alguma ação inesperada, redirecionamento ou erro no console
-
----
-
-## 📁 Estrutura do Projeto
-
-```plaintext
-BlogAgi/
+```
+.
 ├── cypress/
 │   ├── e2e/
-│   │   └── search/
-│   │       └── searchArticles.cy.js      # Casos de teste automatizados
-│   │
+│   │   └── blogSearch.cy.js             # Arquivo principal com os cenários de testes
 │   └── support/
-│       ├── commands.js                   # (Opcional) Custom commands
-│       └── e2e.js                        # Setup global dos testes
-│
-├── cypress.config.js                     # Configuração principal do Cypress
-├── package.json                          # Dependências e scripts
-└── README.md                             # Documentação do projeto
-````
-
----
-
-## ▶️ Como Executar o Projeto
-
-1. **Clone o repositório**
-
-```bash
-git clone https://github.com/rafaelsuzano/BlogAgi.git
-cd BlogAgi
+│       └── pages/
+│           └── BlogSearchPage.js        # Page Object para a página de busca do blog
+│       └── commands.js                  # Arquivo para comandos customizados (se houver)
+├── node_modules/                        # Dependências do projeto (gerada após 'npm install')
+├── package.json                         # Gerenciador de dependências e scripts do projeto
+├── package-lock.json                    # Bloqueia as versões exatas das dependências
+└── README.md                            # Este arquivo
 ```
 
-2. **Instale as dependências**
+  * **`cypress/e2e/blogSearch.cy.js`**: Contém os testes de alto nível que descrevem o comportamento esperado da funcionalidade de busca.
+  * **`cypress/support/pages/BlogSearchPage.js`**: Implementa o Page Object para a página de busca do blog. Ele encapsula seletores de elementos e métodos de interação específicos dessa página, tornando os testes mais legíveis e fáceis de manter.
 
-```bash
-npm install
-```
+-----
 
-3. **Execute os testes em modo interativo (UI)**
+## ⚙️ Configuração
 
-```bash
-npx cypress open
-```
+Certifique-se de ter o [Node.js](https://nodejs.org/en/download/) instalado em sua máquina.
 
-4. **Ou execute em modo headless (linha de comando)**
+-----
 
-```bash
-npx cypress run
-```
+## 🧪 Como Executar os Testes
 
----
+Para executar os testes, siga os passos abaixo:
 
-## 📸 Evidências de Teste
+1.  **Clone o repositório:**
 
-* É possível configurar captura de screenshots automáticas para testes com falha
+    ```bash
+    git clone https://github.com/rafaelsuzano/BlogAgi.git
+    cd BlogAgi
+    ```
 
-* Ideal para pipelines CI/CD (GitHub Actions, GitLab CI)
+2.  **Instale as dependências:**
 
----
+    ```bash
+    npm install
+    # ou, se você usa yarn:
+    yarn install
+    ```
 
-## 📌 Sugestões de Expansão
+3.  **Abra o Cypress Test Runner:**
 
-* Cobrir testes de responsividade (mobile/tablet)
+    ```bash
+    npx cypress open
+    ```
 
-* Validar resultados com filtros ou tags (caso o blog permita)
+    Após executar o comando, uma interface gráfica do Cypress será aberta.
 
-* Testes com interceptações de requisições (`cy.intercept`) para verificar chamadas de API da busca
+      * Selecione `E2E Testing`.
+      * Escolha o navegador de sua preferência.
+      * Na lista de especificações, clique em `blogSearch.cy.js` para iniciar a execução dos testes. Você poderá acompanhar a execução passo a passo no navegador.
 
-* Aplicar testes com múltiplos dados de entrada utilizando `.each()` ou dados via `fixture`
+4.  **Executar testes em modo "headless" (terminal):**
+    Para executar os testes sem abrir a interface gráfica do Cypress, utilize o seguinte comando:
 
----
+    ```bash
+    npx cypress run
+    ```
 
-## 🤝 Contato
+    Os resultados da execução serão exibidos diretamente no terminal.
 
-📧 [rafaelsuzano@hotmail.com](mailto:rafaelsuzano@hotmail.com)
-💼 [LinkedIn – Rafael Suzano Cruz](https://www.linkedin.com/in/rafaelsuzano/)
-🔗 Repositório: [github.com/rafaelsuzano/BlogAgi](https://github.com/rafaelsuzano/BlogAgi.git)
+-----
 
----
+## 📝 Cenários de Teste
 
+Os testes cobrem os seguintes cenários de busca no Blog Agibank:
+
+### Cenário 1: Busca por termo sem resultados
+
+  * **Descrição:** Verifica o comportamento da busca ao inserir um termo que não retorna nenhum resultado.
+  * **Termo de Busca:** `tttt`
+  * **Validação:** Garante que a mensagem de "Lamentamos, mas nada foi encontrado para sua pesquisa, tente novamente com outras palavras." seja exibida corretamente.
+
+### Cenário 2: Busca por termo relevante com resultados
+
+  * **Descrição:** Testa a busca com um termo que deve retornar resultados esperados.
+  * **Termo de Busca:** `INSS`
+  * **Validação:** Confirma que a área de resultados da busca (`.search-results, article`) é exibida e visível.
+
+### Cenário 3: Navegação para um post a partir dos resultados da busca
+
+  * **Descrição:** Simula um usuário buscando por um termo e clicando em um dos resultados para acessar o post correspondente.
+  * **Termo de Busca:** `inss`
+  * **Ação:** Clica no primeiro resultado de busca que contém o título "Como consultar número do benefício INSS?".
+  * **Validação:** Verifica se a página do post correto é carregada e se o título do artigo ("Como consultar número do benefício INSS?") está visível na página.
+
+-----
+
+## ✨ Boas Práticas e Padrões
+
+Este projeto incorpora as seguintes boas práticas:
+
+  * **Page Object Model (POM):**
+      * **Separação de Preocupações:** Os seletores de elementos e as ações da página são encapsulados em classes de Page Objects, mantendo os testes limpos e focados apenas na lógica do cenário.
+      * **Reusabilidade:** Métodos e seletores são reutilizados em diferentes testes, reduzindo a duplicação de código.
+      * **Manutenibilidade:** Alterações na UI da aplicação exigem modificações apenas no Page Object relevante, e não em múltiplos arquivos de teste.
+  * **Testes Independentes:** Cada `it` block (cenário de teste) é projetado para ser independente dos outros, garantindo que a falha de um teste não afete o resultado de outro.
+  * **Seletores Robustos:** Preferência por seletores que sejam menos propensos a quebrar com mudanças na UI (ex: `data-testid` ou seletores de texto visível, como `cy.contains`).
+  * **Nomes Descritivos:** Os nomes dos `describe` e `it` blocks são claros e autoexplicativos, facilitando a compreensão do que cada teste faz.
+  * **`beforeEach` Hook:** Utilizado para definir pré-condições (como a visita à página inicial) antes de cada teste, garantindo um estado limpo para cada execução.
+
+-----
+
+Se tiver alguma dúvida ou sugestão, sinta-se à vontade para abrir uma *issue* neste repositório\!
