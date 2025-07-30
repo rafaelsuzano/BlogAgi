@@ -23,6 +23,6 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: html-report
-          path: cypress/reports/index.html
+          path: cypress/report/index.html
 
 
