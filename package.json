@@ -1,15 +1,26 @@
 {
-  "name": "Automacao Blog AgiBank ",
+  "name": "blogagi",
   "version": "1.0.0",
+  "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "npx cypress run"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rafaelsuzano/BlogAgi.git"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "description": "",
+  "bugs": {
+    "url": "https://github.com/rafaelsuzano/BlogAgi/issues"
+  },
+  "homepage": "https://github.com/rafaelsuzano/BlogAgi#readme",
   "dependencies": {
     "cypress": "^14.5.3"
+  },
+  "devDependencies": {
+    "cypress-mochawesome-reporter": "^4.0.0"
   }
 }

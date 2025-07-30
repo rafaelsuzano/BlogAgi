@@ -1,4 +1,4 @@
-import { BlogSearchPage } from '../../support/pages/BlogSearchPage';
+import { BlogSearchPage } from '../support/pages/BlogSearchPage';
 
 const blog = new BlogSearchPage();
 
@@ -46,10 +46,9 @@ describe('Testes de busca no Blog Agibank – Page Object', () => {
 
       .and('be.visible');; // Verifica se o título da página do post está visível
  
-
+   cy.screenshot()
   });
 
 
 
 });
-

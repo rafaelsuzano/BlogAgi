@@ -1,0 +1,6 @@
+report/index.html
+screenshots/
+report/videos/*.*
+/node_modules
+report/*.*
+cypress/report/index.html
